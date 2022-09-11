@@ -3,8 +3,8 @@ use std::thread;
 use std::time::{Instant};
 
 fn main() {
-    let buf_size = 1024;
-    let producer_msg_no = 1_000_000;
+    let buf_size = 32_768;
+    let producer_msg_no = 10_000_000;
     let (s, r) = bounded(buf_size);
     let s2 = s.clone();
 
