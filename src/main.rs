@@ -1,6 +1,6 @@
 use crossbeam::channel::*;
 use std::thread;
-use std::time::{Instant};
+use std::time::Instant;
 
 fn main() {
     let buf_size = 32_768;
@@ -13,7 +13,7 @@ fn main() {
     let t1 = thread::spawn(move || {
         for _ in 0..producer_msg_no {
             s.send(1).unwrap();
-        }   
+        }
     });
 
     // Producer 2
@@ -22,7 +22,6 @@ fn main() {
             s2.send(1).unwrap();
         }
     });
-    
 
     //Consumer
     let mut sum = 0;
