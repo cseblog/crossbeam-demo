@@ -1,6 +1,6 @@
 use crossbeam::channel::*;
 use std::thread;
-use std::time::{Instant};
+use std::time::Instant;
 
 fn main() {
     let buf_size = 32_768;
@@ -22,17 +22,16 @@ fn main() {
             s2.send(1).unwrap();
         }
     });
-    
 
     //Consumer
     let mut sum = 0;
     for msg in r {
         let tmp = msg;
-        sum = sum + tmp;
+        sum += tmp;
     }
 
-    t1.join();
-    t2.join();
+    let _ = t1.join();
+    let _ = t2.join();
 
     let d = Instant::now().duration_since(start_time);
     let delta = d.as_millis();
