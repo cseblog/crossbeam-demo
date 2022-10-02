@@ -27,11 +27,11 @@ fn main() {
     let mut sum = 0;
     for msg in r {
         let tmp = msg;
-        sum = sum + tmp;
+        sum += tmp;
     }
 
-    t1.join();
-    t2.join();
+    let _ = t1.join();
+    let _ = t2.join();
 
     let d = Instant::now().duration_since(start_time);
     let delta = d.as_millis();
