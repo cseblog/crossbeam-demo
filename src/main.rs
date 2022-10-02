@@ -11,18 +11,14 @@ fn main() {
     let start_time = Instant::now();
     // Producer 1
     let t1 = thread::spawn(move || {
-        let mut i = 0;
-        while i < producer_msg_no {
-            i += 1;
+        for _ in 0..producer_msg_no {
             s.send(1).unwrap();
-        }
+        }   
     });
 
     // Producer 2
     let t2 = thread::spawn(move || {
-        let mut i = 0;
-        while i < producer_msg_no {
-            i += 1;
+        for _ in 0..producer_msg_no {
             s2.send(1).unwrap();
         }
     });
